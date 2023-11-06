@@ -50,7 +50,7 @@ aws eks --region $(terraform output -raw region) update-kubeconfig \
 
 ```
 
-- Once the EKS is up and running, follow this [guide](https://gist.github.com/devorbitus/a292aa1bed559c9b87053aa0fe21d094) to set up Akeyless Gateway with Nginx Ingress and Cert Manager
+- Once the EKS cluster is up and running, follow this [guide](https://gist.github.com/devorbitus/a292aa1bed559c9b87053aa0fe21d094) to set up Akeyless Gateway with Nginx Ingress and Cert Manager
 ```
 https://gist.github.com/devorbitus/a292aa1bed559c9b87053aa0fe21d094
 ```
