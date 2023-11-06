@@ -17,6 +17,17 @@ locals {
 }
 
 ```
+- Update the terraform.tf file to specify where the state file will be stored. Remove the cloud block if the state file is stored on the local machine
+```
+  terraform {
+  cloud {
+    organization = "dcatcher-learning"
+
+    workspaces {
+      name = "akeyless-eks-demo"
+    }
+  }
+```
 
 ## 2. Set up Akeyless Gateway with Nginx Ingress and Cert Manager on the EKS cluster
 - Run the following cli locally to get the EKS cluster access credentials
