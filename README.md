@@ -4,12 +4,21 @@ This repo is built on top of the [Provision an EKS Cluster tutorial](https://dev
 Terraform configuration files to provision an EKS cluster on AWS.
 
 ## 1. Prerequisites
+- Git clone this repo onto your local machine
+```
+git clone https://github.com/roseakeyless/akeyless-gateway-eks.git
+```
 - Have terraform cli installed locally. Follow this [guide](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) to install terraform if needed
 ```
 https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
 ```
 
-- Update the access_key and secret_key in the terraform.tfvars.example and remove .example from the file extension
+- Update the access_key and secret_key in the terraform.tfvars.example and remove .example from the file extension. These are the credentials that terraform uses for authenticating to AWS. Alternatively, you can also use environment variables for authentication.
+```
+export AWS_ACCESS_KEY_ID="access_key"
+export AWS_SECRET_ACCESS_KEY="secret_key"
+export AWS_REGION="us-east-1"
+```
 
 - Update the variables.tf file to reflect the region and variable values you would like to use
 
