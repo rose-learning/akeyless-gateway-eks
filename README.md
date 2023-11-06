@@ -1,6 +1,6 @@
 # Deploy an Akeyless Gateway on EKS
 
-This repo is a companion repo to the [Provision an EKS Cluster tutorial](https://developer.hashicorp.com/terraform/tutorials/kubernetes/eks), containing
+This repo is built on top of the [Provision an EKS Cluster tutorial](https://developer.hashicorp.com/terraform/tutorials/kubernetes/eks), containing
 Terraform configuration files to provision an EKS cluster on AWS.
 
 ## 1. Prerequisites
@@ -47,4 +47,4 @@ https://gist.github.com/devorbitus/a292aa1bed559c9b87053aa0fe21d094
 ```
 
 - Add CNAME record to the hosted zone in AWS Route 53 with a CNAME record pointing to the Nginx Ingress External IP/DNS Name
-
+![adding DNS records for the gateway to the hosted zone](.)
