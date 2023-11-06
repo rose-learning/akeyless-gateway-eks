@@ -56,5 +56,9 @@ https://gist.github.com/devorbitus/a292aa1bed559c9b87053aa0fe21d094
 ```
 
 - Add DNS records to your hosted zone in AWS Route 53 with a CNAME record pointing to the Nginx Ingress External IP/DNS Name
+  - run the following k8s cli to get the external IP/DNS name for the Nginx Ingress load balancer
+     ```
+     kubectl get svc -n akeyless
+     ```
   
 ![adding DNS records for the gateway to the hosted zone](./images/dns-records.png)
