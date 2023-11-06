@@ -13,7 +13,7 @@ git clone https://github.com/roseakeyless/akeyless-gateway-eks.git
 https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
 ```
 
-- Update the access_key and secret_key in the terraform.tfvars.example and remove .example from the file extension. These are the credentials that terraform uses for authenticating to AWS. Alternatively, you can also use environment variables for authentication.
+- Update the access_key and secret_key in the terraform.tfvars.example file and remove .example from the file extension. These are the credentials that terraform uses for authenticating to AWS. Alternatively, you can also use environment variables for authentication.
 ```
 export AWS_ACCESS_KEY_ID="access_key"
 export AWS_SECRET_ACCESS_KEY="secret_key"
