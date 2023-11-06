@@ -1,11 +1,13 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-terraform {
-
+  # this is for using Terraform Cloud for storing the state file. Remove the cloud block if storing state file locally
+  terraform {
   cloud {
+    organization = "dcatcher-learning"
+
     workspaces {
-      name = "learn-terraform-eks"
+      name = "akeyless-eks-demo"
     }
   }
 
@@ -33,4 +35,6 @@ terraform {
 
   required_version = "~> 1.3"
 }
+
+
 

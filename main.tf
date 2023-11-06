@@ -3,6 +3,8 @@
 
 provider "aws" {
   region = var.region
+  access_key = var.access_key
+  secret_key = var.secret_key
 }
 
 # Filter out local zones, which are not currently supported 
@@ -15,7 +17,9 @@ data "aws_availability_zones" "available" {
 }
 
 locals {
-  cluster_name = "education-eks-${random_string.suffix.result}"
+  cluster_name = "rose-gateway-eks"
+  vpc_name = "cs-rose-eks-demo-vpc"
+  node_group_name = "eks-node-group-rose"
 }
 
 resource "random_string" "suffix" {
@@ -27,7 +31,7 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.0.0"
 
-  name = "education-vpc"
+  name = local.vpc_name
 
   cidr = "10.0.0.0/16"
   azs  = slice(data.aws_availability_zones.available.names, 0, 3)
@@ -52,10 +56,10 @@ module "vpc" {
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "19.15.3"
+  version = "19.16.0"
 
   cluster_name    = local.cluster_name
-  cluster_version = "1.27"
+  cluster_version = "1.28"
 
   vpc_id                         = module.vpc.vpc_id
   subnet_ids                     = module.vpc.private_subnets
@@ -68,16 +72,17 @@ module "eks" {
 
   eks_managed_node_groups = {
     one = {
-      name = "node-group-1"
+      name = local.node_group_name
 
-      instance_types = ["t3.small"]
+      instance_types = ["t3.medium"]
 
       min_size     = 1
       max_size     = 3
       desired_size = 2
     }
 
-    two = {
+    # remove node group two
+    /* two = {
       name = "node-group-2"
 
       instance_types = ["t3.small"]
@@ -85,7 +90,7 @@ module "eks" {
       min_size     = 1
       max_size     = 2
       desired_size = 1
-    }
+    } */
   }
 }
 
@@ -114,5 +119,6 @@ resource "aws_eks_addon" "ebs-csi" {
   tags = {
     "eks_addon" = "ebs-csi"
     "terraform" = "true"
+    "owner" = "rosez"
   }
 }

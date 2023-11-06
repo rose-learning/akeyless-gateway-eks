@@ -1,0 +1,4 @@
+# don't push the terraform.tfvars file into a central repository
+
+access_key = <access_key>
+secret_key = <secret_key>

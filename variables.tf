@@ -4,5 +4,13 @@
 variable "region" {
   description = "AWS region"
   type        = string
-  default     = "us-east-2"
+  default     = "us-east-1"
+}
+
+variable "access_key" {
+  description = "aws access key"
+}
+
+variable "secret_key" {
+  description = "aws access secret key"
 }
