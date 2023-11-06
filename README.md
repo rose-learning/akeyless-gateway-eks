@@ -11,14 +11,8 @@ https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
 
 - Update the access_key and secret_key in the terraform.tfvars.example and remove .example from the file extension
 
-- Update the locals block in the main.tf file to reflect the names you would like to use
-```
-locals {
-  cluster_name = "rose-gateway-eks"
-  vpc_name = "cs-rose-eks-demo-vpc"
-  node_group_name = "eks-node-group-rose"
-}
-```
+- Update the variables.tf file to reflect the region and variable values you would like to use
+
 - Update the terraform.tf file to specify where the state file will be stored. Remove the cloud block if the state file is stored on the local machine
 ```
   terraform {
