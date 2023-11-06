@@ -46,6 +46,6 @@ aws eks --region $(terraform output -raw region) update-kubeconfig \
 https://gist.github.com/devorbitus/a292aa1bed559c9b87053aa0fe21d094
 ```
 
-- Add CNAME record to the hosted zone in AWS Route 53 with a CNAME record pointing to the Nginx Ingress External IP/DNS Name
+- Add DNS records to your hosted zone in AWS Route 53 with a CNAME record pointing to the Nginx Ingress External IP/DNS Name
   
 ![adding DNS records for the gateway to the hosted zone](./images/dns-records.png)
