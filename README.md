@@ -1,10 +1,14 @@
-# Learn Terraform - Provision an EKS Cluster
+# Deploy an Akeyless Gateway on EKS
 
 This repo is a companion repo to the [Provision an EKS Cluster tutorial](https://developer.hashicorp.com/terraform/tutorials/kubernetes/eks), containing
 Terraform configuration files to provision an EKS cluster on AWS.
 
 ## 1. Prerequisites
-- Have terraform cli installed locally
+- Have terraform cli installed locally. Follow this [guide](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) to install terraform if needed
+```
+https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
+
+```
 
 - Update the access_key and secret_key in the terraform.tfvars.example and remove .example from the file extension
 
@@ -37,7 +41,7 @@ aws eks --region $(terraform output -raw region) update-kubeconfig \
 
 ```
 
-- Once the EKS is up and running, follow this guide to set up Akeyless Gateway with Nginx Ingress and Cert Manager
+- Once the EKS is up and running, follow this [guide](https://gist.github.com/devorbitus/a292aa1bed559c9b87053aa0fe21d094) to set up Akeyless Gateway with Nginx Ingress and Cert Manager
 ```
 https://gist.github.com/devorbitus/a292aa1bed559c9b87053aa0fe21d094
 ```
