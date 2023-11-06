@@ -81,7 +81,7 @@ module "eks" {
       desired_size = 2
     }
 
-    # remove node group two
+    # don't need two node groups for testing, removing node group two
     /* two = {
       name = "node-group-2"
 
