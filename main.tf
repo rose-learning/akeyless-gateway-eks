@@ -16,12 +16,6 @@ data "aws_availability_zones" "available" {
   }
 }
 
-locals {
-  cluster_name = "rose-gateway-eks"
-  vpc_name = "cs-rose-eks-demo-vpc"
-  node_group_name = "eks-node-group-rose"
-}
-
 resource "random_string" "suffix" {
   length  = 8
   special = false
@@ -31,7 +25,7 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.0.0"
 
-  name = local.vpc_name
+  name = var.vpc_name
 
   cidr = "10.0.0.0/16"
   azs  = slice(data.aws_availability_zones.available.names, 0, 3)
@@ -58,7 +52,7 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "19.16.0"
 
-  cluster_name    = local.cluster_name
+  cluster_name    = var.cluster_name
   cluster_version = "1.28"
 
   vpc_id                         = module.vpc.vpc_id
@@ -72,7 +66,7 @@ module "eks" {
 
   eks_managed_node_groups = {
     one = {
-      name = local.node_group_name
+      name = var.node_group_name
 
       instance_types = ["t3.medium"]
 
@@ -119,6 +113,6 @@ resource "aws_eks_addon" "ebs-csi" {
   tags = {
     "eks_addon" = "ebs-csi"
     "terraform" = "true"
-    "owner" = "rosez"
+    "owner" = var.resource_owner
   }
 }
