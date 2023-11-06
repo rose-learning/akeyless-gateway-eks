@@ -7,7 +7,6 @@ Terraform configuration files to provision an EKS cluster on AWS.
 - Have terraform cli installed locally. Follow this [guide](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) to install terraform if needed
 ```
 https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
-
 ```
 
 - Update the access_key and secret_key in the terraform.tfvars.example and remove .example from the file extension
@@ -19,7 +18,6 @@ locals {
   vpc_name = "cs-rose-eks-demo-vpc"
   node_group_name = "eks-node-group-rose"
 }
-
 ```
 - Update the terraform.tf file to specify where the state file will be stored. Remove the cloud block if the state file is stored on the local machine
 ```
@@ -31,6 +29,14 @@ locals {
       name = "akeyless-eks-demo"
     }
   }
+```
+- Run Terraform to create the resources
+```
+terraform init    #to initilize terraform in the directory
+
+terraform plan    #to preview the resources
+
+terraform apply   #to create the resources
 ```
 
 ## 2. Set up Akeyless Gateway with Nginx Ingress and Cert Manager on the EKS cluster
